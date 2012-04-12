@@ -37,14 +37,14 @@ import java.io.StringReader;
  * source strings.
  * 
  * @author JSON.org
- * @version 2011-11-24
+ * @version 2012-02-16
  */
 public class JSONTokener {
 
-	private int character;
+	private long character;
 	private boolean eof;
-	private int index;
-	private int line;
+	private long index;
+	private long line;
 	private char previous;
 	private final Reader reader;
 	private boolean usePrevious;
@@ -404,10 +404,10 @@ public class JSONTokener {
 	public char skipTo(char to) throws JSONException {
 		char c;
 		try {
-			int startIndex = this.index;
-			int startCharacter = this.character;
-			int startLine = this.line;
-			this.reader.mark(Integer.MAX_VALUE);
+			long startIndex = this.index;
+			long startCharacter = this.character;
+			long startLine = this.line;
+			this.reader.mark(1000000);
 			do {
 				c = this.next();
 				if (c == 0) {
